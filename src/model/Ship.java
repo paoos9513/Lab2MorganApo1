@@ -14,6 +14,13 @@ public class Ship {
 
     private double totalWeight;
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public Ship() {
 
         captain = "Barba Negra";
@@ -24,6 +31,13 @@ public class Ship {
 
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+    
     public String addLoad(Load newLoad) {
 
         String msg = "";
@@ -116,6 +130,13 @@ public class Ship {
 
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public String emptyShip() {
 
         myLoads.clear();
@@ -123,6 +144,13 @@ public class Ship {
 
         return "Barco descargado";
     }
+
+    /**
+    *
+    *
+    *
+    *
+    */
 
     public String canSail() {
         String result = "No puede zarpar aun.";
@@ -139,6 +167,13 @@ public class Ship {
 
         return result;
     }
+
+    /**
+    *
+    *
+    *
+    *
+    */
 
     public double costOfLoad(Load newLoad) {
         double cost = 0;
@@ -169,6 +204,13 @@ public class Ship {
         return cost;
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public String upgradeClient(int numClient) {
         String result = "";
 
@@ -193,33 +235,89 @@ public class Ship {
         return result;
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public String getCaptain() {
         return captain;
     }
+
+    /**
+    *
+    *
+    *
+    *
+    */
 
     public void setCaptain(String captain) {
         this.captain = captain;
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public Client[] getClients() {
         return clients;
     }
+
+    /**
+    *
+    *
+    *
+    *
+    */
 
     public void setClients(Client[] clients) {
         this.clients = clients;
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public ArrayList<Load> getMyLoads() {
         return myLoads;
     }
+
+    /**
+    *
+    *
+    *
+    *
+    */
 
     public void setMyLoads(ArrayList<Load> myLoads) {
         this.myLoads = myLoads;
     }
 
+    /**
+    *
+    *
+    *
+    *
+    */
+
     public double getTotalWeight() {
         return totalWeight;
     }
+
+    /**
+    *
+    *
+    *
+    *
+    */
 
     public void setTotalWeight(double totalWeight) {
         this.totalWeight = totalWeight;
