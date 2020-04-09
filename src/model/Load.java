@@ -2,7 +2,7 @@ package model;
 
 public class Load {
 
-    public final static String[] TYPELOAD = { "PELIGROSA", "PERECEDERA", "NO PERECEDERA" };
+    public final static String[] TYPELOAD = { "DANGEROUS", "PERISHABLE", "NOT PERISHABLE" };
 
     // Atributos
     private String typeLoad;

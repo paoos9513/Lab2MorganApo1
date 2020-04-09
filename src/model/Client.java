@@ -2,7 +2,7 @@ package model;
 
 public class Client {
 
-    public static final String[] TYPESCLIENT = { "Normal", "Plata", "Oro", "Platinum" };
+    public static final String[] TYPESCLIENT = { "Normal", "Silver", "Gold", "Platinum" };
 
     // Atributos
     private String name;

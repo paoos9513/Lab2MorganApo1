@@ -6,6 +6,8 @@ public class Ship {
 
     private final static double MAXVALUE = 28000;
 
+    //atributos
+
     private String captain;
 
     private Client[] clients;
@@ -15,11 +17,9 @@ public class Ship {
     private double totalWeight;
 
     /**
-    *
-    *
-    *
-    *
-    */
+    *this is the constructor method that allows me to give value to the attributes
+    *@author: Paola Osorio
+    */  
 
     public Ship() {
 
@@ -32,12 +32,12 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to enter a new load as long as the restrictions are met
+    *@param newLoad this parameter is of type Load. newLoad != null
+    *@return String msg
+    *@author: Paola Osorio
     */
-    
+
     public String addLoad(Load newLoad) {
 
         String msg = "";
@@ -47,11 +47,11 @@ public class Ship {
 
         for (int i = 0; i < myLoads.size(); i++) {
 
-            if (myLoads.get(i).getTypeLoad().equals("PERECEDERA")) {
+            if (myLoads.get(i).getTypeLoad().equals("PERISHABLE")) {
                 perecedera = true;
             }
 
-            if (myLoads.get(i).getTypeLoad().equals("PELIGROSA")) {
+            if (myLoads.get(i).getTypeLoad().equals("DANGEROUS")) {
                 peligrosa = true;
             }
 
@@ -59,7 +59,7 @@ public class Ship {
 
         if (totalWeight < MAXVALUE) {
 
-            if (perecedera && newLoad.getTypeLoad().equals("PELIGROSA")) {
+            if (perecedera && newLoad.getTypeLoad().equals("DANGEROUS")) {
 
                 for (int i = 0; i < myLoads.size(); i++) {
                     if (myLoads.get(i).getOwner().getName().equals(newLoad.getOwner().getName())) {
@@ -67,11 +67,11 @@ public class Ship {
                     }
                 }
 
-                msg = "No se pudo cargar por que no cumple las condiciones.";
+                msg = "Could not load because it does not meet the conditions.";
 
             } else {
 
-                msg = "Se puede cargar y su valor incluyendo un posible descuento es: $" + costOfLoad(newLoad);
+                msg = "It can be loaded and its value including a possible discount is: $" + costOfLoad(newLoad);
 
                 myLoads.add(newLoad);
 
@@ -87,7 +87,7 @@ public class Ship {
 
             }
 
-            if (peligrosa && newLoad.getTypeLoad().equals("PERECEDERA")) {
+            if (peligrosa && newLoad.getTypeLoad().equals("PERISHABLE")) {
 
                 for (int i = 0; i < myLoads.size(); i++) {
                     if (myLoads.get(i).getOwner().getName().equals(newLoad.getOwner().getName())) {
@@ -95,11 +95,11 @@ public class Ship {
                     }
                 }
 
-                msg = "No se pudo cargar por que no cumple las condiciones.";
+                msg = "Could not load because it does not meet the conditions.";
 
             } else {
 
-                msg = "Se puede cargar y su valor incluyendo un posible descuento es: $" + costOfLoad(newLoad);
+                msg = "It can be loaded and its value including a possible discount is: $" + costOfLoad(newLoad);
 
                 myLoads.add(newLoad);
 
@@ -123,7 +123,7 @@ public class Ship {
                 }
             }
 
-            msg = "No se pudo cargar porque excede el peso permitido.";
+            msg = "Could not be loaded because it exceeds the allowed weight.";
         }
 
         return msg;
@@ -131,10 +131,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to empty the boat
+    *@return Unloaded ship
+    *@author: Paola Osorio
     */
 
     public String emptyShip() {
@@ -142,37 +141,37 @@ public class Ship {
         myLoads.clear();
         totalWeight = 0;
 
-        return "Barco descargado";
+        return "Unloaded ship";
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to check if you can already set sail or not
+    *@return It cannot set sail yet or If you can set sail.
+    *@author: Paola Osorio
     */
 
     public String canSail() {
-        String result = "No puede zarpar aun.";
+
+        String result = "It cannot set sail yet.";
 
         System.out.println(myLoads.size());
         if (myLoads.size() > 2) {
-            result = "Si se puede zarpar";
+            result = "If you can set sail";
         }
 
         System.out.println(totalWeight);
         if (totalWeight > 12000) {
-            result = "Si se puede zarpar";
+            result = "If you can set sail";
         }
 
         return result;
     }
 
     /**
-    *
-    *
-    *
-    *
+    *This method allows me to evaluate the cost of the cargo and if it meets the conditions, the discount will be applied.
+    *@param newLoad this parameter is of type Load. newLoad != null 
+    *@return double cost
+    *@author: Paola Osorio
     */
 
     public double costOfLoad(Load newLoad) {
@@ -205,10 +204,10 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *This method evaluates the amount of cargo that the client has sent or the money that has been paid and increases it from category
+    *@param numClient this parameter is of type int. numClient != null 
+    *@return String result
+    *@author: Paola Osorio
     */
 
     public String upgradeClient(int numClient) {
@@ -216,19 +215,19 @@ public class Ship {
 
         if (clients[numClient - 1].getTypeClient().equals("Normal")) {
             if (clients[numClient - 1].getWeightAccum() >= 35000) {
-                result = "Felicidades!!! Este cliente subio de categoria a Plata";
+                result = "Congratulations!!! This customer went up to Silver";
             }
         }
 
-        if (clients[numClient - 1].getTypeClient().equals("Plata")) {
+        if (clients[numClient - 1].getTypeClient().equals("Silver")) {
             if (clients[numClient - 1].getWeightAccum() >= 55000 || clients[numClient - 1].getMoneyAccum() >= 2000000) {
-                result = "Felicidades!!! Este cliente subio de categoria a Oro";
+                result = "Congratulations!!! This customer upgraded to Gold";
             }
         }
 
-        if (clients[numClient - 1].getTypeClient().equals("Oro")) {
+        if (clients[numClient - 1].getTypeClient().equals("Gold")) {
             if (clients[numClient - 1].getMoneyAccum() >= 5000000) {
-                result = "Felicidades!!! Este cliente subio de categoria a Platinum";
+                result = "Congratulations!!! This customer upgraded to Platinum";
             }
         }
 
@@ -236,10 +235,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method gives me the name of the captain
+    *@return captain
+    *@author: Paola Osorio
     */
 
     public String getCaptain() {
@@ -247,21 +245,20 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to change the captain's name
+    *@param captain this parameter is of type String. captain != null
+    *@author: Paola Osorio
     */
 
     public void setCaptain(String captain) {
         this.captain = captain;
     }
 
-    /**
-    *
-    *
-    *
-    *
+   
+ /**​
+​    * This method returns the five relations with clients. 
+    *@return an array != null of type Client
+    *@author: Paola Osorio
     */
 
     public Client[] getClients() {
@@ -269,10 +266,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to change the five clients that the boat has
+    *@param client this parameter is an array of type Client[]. clients != null
+    *@author: Paola Osorio
     */
 
     public void setClients(Client[] clients) {
@@ -280,10 +276,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to store the amount of cargo the ship receives
+    *@return ArrayList<Load> myLoads
+    *@author: Paola Osorio
     */
 
     public ArrayList<Load> getMyLoads() {
@@ -291,10 +286,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *This method allows me to modify the amount of cargo the ship receives
+    *@param myLoads this is an array of type Load arrayList. myLoads != null
+    *@author: Paola Osorio
     */
 
     public void setMyLoads(ArrayList<Load> myLoads) {
@@ -302,10 +296,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method gives me the total weight that the boat carries
+    *@return double totalWeight
+    *@author: Paola Osorio
     */
 
     public double getTotalWeight() {
@@ -313,10 +306,9 @@ public class Ship {
     }
 
     /**
-    *
-    *
-    *
-    *
+    *this method allows me to modify the total weight of the boat
+    *@param totalWeight this is a type parameter double. totalWeight != null
+    *@author: Paola Osorio
     */
 
     public void setTotalWeight(double totalWeight) {
