@@ -4,7 +4,7 @@ import model.*;
 
 import java.util.Scanner;
 /**
-*
+* this is the class principal
 *
 *
 *
